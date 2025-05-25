@@ -1,6 +1,7 @@
 import Modal from "react-modal";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
+
 const modalStyles = {
   content: {
     width: "80vw",
@@ -18,8 +19,18 @@ const modalStyles = {
     zIndex: 1000,
   },
 };
-
-const ImageModal = ({ isOpen, onClose, src, alt }) => {
+type ImageModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  src: string;
+  alt: string;
+};
+const ImageModal: React.FC<ImageModalProps> = ({
+  isOpen,
+  onClose,
+  src,
+  alt,
+}) => {
   useEffect(() => {
     Modal.setAppElement("#root");
   }, []);
